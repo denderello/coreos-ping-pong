@@ -12,7 +12,11 @@ import (
 )
 
 func main() {
-	addr := net.JoinHostPort("localhost", "9000")
+	if len(os.Args) != 3 {
+		Quitf("You need to pass host and port as parameters")
+	}
+
+	addr := net.JoinHostPort(os.Args[1], os.Args[2])
 	tcpClient(addr)
 }
 
